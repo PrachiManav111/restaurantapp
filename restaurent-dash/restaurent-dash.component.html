@@ -1,0 +1,132 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h2>Restaurent Record App</h2>
+    <div class="d-flex">
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+        Restaurent</button>
+        <button routerLink="/login" class="btn btn-danger mx-3">Log Out</button>
+    </div>
+  </div>
+</nav>
+
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Restaurent Records Management</h1>
+    <p class="col-md-8 fs-4">You can search of Restaurent </p>
+    <a class="btn btn-primary btn-lg" target="_blank" type="button" href="https://Eawof.com">Click</a>
+  </div>
+</div>
+
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Restaurent ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Address</th>
+      <th scope="col">Service</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Prachi</td>
+      <td>prachi@gmail.com</td>
+      <td>356574543449</td>
+      <td>Location is not fixed</td>
+      <td>Chai & Coffee</td>
+      <td>
+        <button class="btn btn-info">Edit</button>&nbsp;
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>Bhavya</td>
+      <td>bhavya@gmail.com</td>
+      <td>35000449</td>
+      <td>Location is not fixed</td>
+      <td>Momos & Jeera Rice</td>
+      <td>
+        <button class="btn btn-info">Edit</button>&nbsp;
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Rashika</td>
+      <td>rashika@gmail.com</td>
+      <td>797767856</td>
+      <td>Location is not fixed</td>
+      <td>Chole Bhature & Dosa</td>
+      <td>
+        <button class="btn btn-info">Edit</button>&nbsp;
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form" [formGroup]="registerFormgroup" (ngSubmit)="onClick()" #registerForm="ngForm">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" formControlName="name" [(ngModel)]="name" class="form-control" placeholder="Name"
+              id="name" [ngClass]="{ 'is-invalid':submitted && f.name.errors }">
+            <span *ngIf="f.name.errors && submitted">
+              Name is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email ID</label>
+            <input type="email" formControlName="email" [(ngModel)]="email" class="form-control" placeholder="Email"
+              id="email" [ngClass]="{ 'is-invalid':submitted && f.email.errors }">
+            <span *ngIf="f.email.errors && submitted">
+              Email is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mobile Number</label>
+            <input type="phone" formControlName="mobile" [(ngModel)]="mobile" class="form-control"
+              placeholder="Mobile Number" id="phone" [ngClass]="{ 'is-invalid':submitted && f.mobile.errors }">
+            <span *ngIf="f.mobile.errors && submitted">
+              Mobile Name is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" formControlName="address" [(ngModel)]="address" class="form-control"
+              placeholder="Address" id="address" [ngClass]="{ 'is-invalid':submitted && f.address.errors }">
+            <span *ngIf="f.address.errors && submitted">
+              Address is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Service</label>
+            <input type="text" formControlName="service" [(ngModel)]="service" class="form-control"
+              placeholder="Service" id="service" [ngClass]="{ 'is-invalid':submitted && f.service.errors }">
+            <span *ngIf="f.service.errors && submitted">
+              Service is required
+            </span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button (click)="onClick()" class="btn btn-primary" type="button">Add Details</button>
+          </div>
+          <div class="mb-3">
+            {{message}}</div>
+        </form>
+      </div>
+    </div>
+  </div>
